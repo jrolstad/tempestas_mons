@@ -10,7 +10,7 @@ namespace tempestas_mons.web.Controllers
     public class RoadConditionController : Controller
     {
         // GET: RoadCondition
-        public ViewResult Index(string startDate, string endDate)
+        public ViewResult Index()
         {
             var viewModel = new RoadConditionIndexViewModel
             {
@@ -27,9 +27,15 @@ namespace tempestas_mons.web.Controllers
                 }
             };
 
-            //if (startDate != null && endDate != null)
+            return View(viewModel);
+        }
+
+        [HttpPost]
+        public ViewResult Index(string startDate, string endDate, string direction)
+        {
+            var viewModel = new RoadConditionIndexViewModel
             {
-                viewModel.Summary = new RoadConditionSummaryViewModel
+                Summary = new RoadConditionSummaryViewModel
                 {
                     PercentChainsRequiredAllVehicles = 50,
                     PercentChainsRequiredExceptAllWheelDrive = 60,
@@ -39,9 +45,10 @@ namespace tempestas_mons.web.Controllers
                     PercentTrafficDelayed = 5,
                     PercentTrafficDelayedForAvalancheControl = 1,
                     PercentTrafficStoppedForAvalancheControl = 2,
-                };
-            }
-         
+                }
+            };
+
+
             return View(viewModel);
         }
     }
