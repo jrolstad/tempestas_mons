@@ -39,8 +39,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="models\rawdata\RoadCondition.cs" />
-    <Compile Include="models\rawdata\TravelTime.cs" />
+    <Compile Include="models\rawdata\RoadConditionFileRow.cs" />
+    <Compile Include="models\rawdata\TravelTimeFileRow.cs" />
+    <Compile Include="models\RoadCondition.cs" />
+    <Compile Include="models\TravelTime.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
