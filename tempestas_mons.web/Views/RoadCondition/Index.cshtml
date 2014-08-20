@@ -1,4 +1,4 @@
-﻿
+﻿@model tempestas_mons.web.Models.roadconditions.RoadConditionIndexViewModel
 @{
     ViewBag.Title = "Index";
 }
@@ -6,25 +6,107 @@
 <h2>Index</h2>
 
 <div id="example">
-    <div id="to-do">
+    
+    <div id="searchCritera">
         <span>Start </span><input id="startDate" style="width:200px;" />
         <span>End </span><input id="endDate" style="width:200px;" />
         <select id="direction" placeholder="Direction...">
+            <option>All</option>
             <option>Westbound</option>
             <option>Eastbound</option>
         </select>
+        <button id="searchButton" class="k-button">Analyze</button>
     </div>
+    @if (Model.Summary != null)
+    {
+        <div id="summaryData">
+            <div>
+                <ul class="list-unstyled">
+                    <li>
+                        <h4>Traffic Delayed</h4>
+                        <div id="PercentTrafficDelayed"></div>
+                    </li>
+                    <li>
+                        <h4>Traffic Delayed (Avalanche Control)</h4>
+                        <div id="PercentTrafficDelayedForAvalancheControl"></div>
+                    </li>
+                    <li>
+                        <h4>Traction Tires Advised</h4>
+                        <div id="PercentTractionTiresAdvised"></div>
+                    </li>
+                    <li>
+                        <h4>Traction Tires Required</h4>
+                        <div id="PercentTractionTiresRequired"></div>
+                    </li>
+                    <li>
+                        <h4>Chains Required (Except AWD)</h4>
+                        <div id="PercentChainsRequiredExceptAllWheelDrive"></div>
+                    </li>
+                    <li>
+                        <h4>Chains Requried (All Vehicles)</h4>
+                        <div id="PercentChainsRequiredAllVehicles"></div>
+                    </li>
+                    <li>
+                        <h4>Pass Closed</h4>
+                        <div id="PercentPassClosed"></div>
+                    </li>
+                    <li>
+                        <h4>Pass Closed (Avalanche Control)</h4>
+                        <div id="PercentTrafficStoppedForAvalancheControl"></div>
+                    </li>
+                  
+                   
+                </ul>
+            </div>
+        </div>
+    }
+
+    
+
     <script>
-            $(document).ready(function () {
-                // create DateTimePicker from input HTML element
-                $("#startDate").kendoDateTimePicker({
-                    value:new Date()
-                });
-                $("#endDate").kendoDateTimePicker({
-                    value: new Date()
-                });
-                $("#direction").kendoComboBox();
-            });
+    $(document).ready(function () {
+        // create DateTimePicker from input HTML element
+        $("#startDate").kendoDateTimePicker({
+            value:new Date()
+        });
+        $("#endDate").kendoDateTimePicker({
+            value: new Date()
+        });
+        $("#direction").kendoComboBox();
+
+        $("#PercentTractionTiresAdvised").kendoProgressBar({min: 0,max: 100,type: "percent",animation: { duration: 400}})
+        .data("kendoProgressBar")
+        .value(@Model.Summary.PercentTractionTiresAdvised);
+
+        $("#PercentTractionTiresRequired").kendoProgressBar({ min: 0, max: 100, type: "percent", animation: { duration: 400 } })
+       .data("kendoProgressBar")
+       .value(@Model.Summary.PercentTractionTiresRequired);
+
+        $("#PercentChainsRequiredAllVehicles").kendoProgressBar({ min: 0, max: 100, type: "percent", animation: { duration: 400 } })
+       .data("kendoProgressBar")
+       .value(@Model.Summary.PercentChainsRequiredAllVehicles);
+
+        $("#PercentChainsRequiredExceptAllWheelDrive").kendoProgressBar({ min: 0, max: 100, type: "percent", animation: { duration: 400 } })
+       .data("kendoProgressBar")
+       .value(@Model.Summary.PercentChainsRequiredExceptAllWheelDrive);
+
+        $("#PercentPassClosed").kendoProgressBar({ min: 0, max: 100, type: "percent", animation: { duration: 400 } })
+       .data("kendoProgressBar")
+       .value(@Model.Summary.PercentPassClosed);
+
+        $("#PercentTrafficDelayed").kendoProgressBar({ min: 0, max: 100, type: "percent", animation: { duration: 400 } })
+       .data("kendoProgressBar")
+       .value(@Model.Summary.PercentTrafficDelayed);
+
+        $("#PercentTrafficStoppedForAvalancheControl").kendoProgressBar({ min: 0, max: 100, type: "percent", animation: { duration: 400 } })
+       .data("kendoProgressBar")
+       .value(@Model.Summary.PercentTrafficStoppedForAvalancheControl);
+
+        $("#PercentTrafficDelayedForAvalancheControl").kendoProgressBar({ min: 0, max: 100, type: "percent", animation: { duration: 400 } })
+       .data("kendoProgressBar")
+       .value(@Model.Summary.PercentTrafficDelayedForAvalancheControl);
+
+    });
     </script>
 
 </div>

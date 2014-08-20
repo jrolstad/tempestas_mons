@@ -5,7 +5,8 @@ using System.Web;
 
 namespace tempestas_mons.web.Models.roadconditions
 {
-    public class RoadConditionViewModel
+    public class RoadConditionIndexViewModel
     {
+        public RoadConditionSummaryViewModel Summary { get; set; }
     }
 }
