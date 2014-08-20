@@ -1,0 +1,9 @@
+
+_ReSharper.*
+obj/
+bin/
+*.user
+packages/
+*.mdf
+*.ldf
+*.suo
