@@ -14,7 +14,7 @@ namespace tempestas_mons.domain.models
 
         public DateTime End { get; set; }
 
-        public double TravelTime { get; set; }
+        public double Time { get; set; }
     }
 
     public enum Direction
