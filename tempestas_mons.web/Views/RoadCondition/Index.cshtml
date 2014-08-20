@@ -1,0 +1,30 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<div id="example">
+    <div id="to-do">
+        <span>Start </span><input id="startDate" style="width:200px;" />
+        <span>End </span><input id="endDate" style="width:200px;" />
+        <select id="direction" placeholder="Direction...">
+            <option>Westbound</option>
+            <option>Eastbound</option>
+        </select>
+    </div>
+    <script>
+            $(document).ready(function () {
+                // create DateTimePicker from input HTML element
+                $("#startDate").kendoDateTimePicker({
+                    value:new Date()
+                });
+                $("#endDate").kendoDateTimePicker({
+                    value: new Date()
+                });
+                $("#direction").kendoComboBox();
+            });
+    </script>
+
+</div>
