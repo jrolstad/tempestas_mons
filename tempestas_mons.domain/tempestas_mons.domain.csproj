@@ -54,7 +54,7 @@
     <Compile Include="StreamReaderFactory.cs" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="data\csv\Archive %281%29.csv" />
+    <EmbeddedResource Include="data\csv\RoadConditions_I-90.csv" />
     <EmbeddedResource Include="data\csv\TravelTime_I-90_EB.csv" />
     <EmbeddedResource Include="data\csv\TravelTime_I-90_WB.csv" />
     <None Include="data\raw\Archive.xlsb" />

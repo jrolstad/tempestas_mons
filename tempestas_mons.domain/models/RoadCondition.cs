@@ -12,7 +12,7 @@ namespace tempestas_mons.domain.models
 
         public DateTime End { get; set; }
 
-        public double Temperature { get; set; }
+        public double? Temperature { get; set; }
 
         public string Weather { get; set; }
 
@@ -36,6 +36,13 @@ namespace tempestas_mons.domain.models
         TractionTiresAdvised,
         TractionTiresRequired,
         ChainsRequiredVehiclesOver10000GVW,
-        ChainsRequired,
+        ChainsRequiredAllVehicles,
+        ChainsRequiredExceptAllWheelDrive,
+        PassClosed,
+        TrafficDelayed,
+        TrafficDelayedForAvalancheControl,
+        TrafficStoppedForAvalancheControl,
+        OversizeVehiclesProhibited
+
     }
 }
