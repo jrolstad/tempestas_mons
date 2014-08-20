@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace tempestas_mons.domain.models.rawdata
 {
-    public class TravelTime
+    public class TravelTimeFileRow
     {
         public string Date_Time {get;set;}
         public string DirectionTravelTimeMinutes {get;set;}

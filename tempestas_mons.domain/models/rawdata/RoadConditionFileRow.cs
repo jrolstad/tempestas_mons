@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace tempestas_mons.domain.models.rawdata
 {
-    public class RoadCondition
+    public class RoadConditionFileRow
     {
         public string MountainPassConditionArchiveID {get;set;}
         public string DateUpdated {get;set;}
