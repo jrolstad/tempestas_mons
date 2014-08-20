@@ -12,7 +12,7 @@ namespace tempestas_mons.domain.repositories
         
         public List<TravelTime> Get()
         {
-            throw new NotImplementedException();
+            var 
         }
     }
 }
