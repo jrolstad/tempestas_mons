@@ -13,15 +13,15 @@
         <div class="form-inline container">
             <div class="form-group">
                 <label for="startDate" class="control-label">Start</label>
-                <input id="startDate"  style="width: 200px;" />
+                <input id="startDate"  style="width: 200px;" name="startDate" value="@Model.StartDate" />
             </div>
             <div class="form-group">
                 <label for="endDate" class="control-label">End</label>
-                <input id="endDate" style="width: 200px;" />
+                <input id="endDate" style="width: 200px;" name="endDate" value="@Model.EndDate" />
             </div>
             <div class="form-group">
                 <label for="direction" class="control-label">Direction</label>
-                <select id="direction">
+                <select id="direction" name="direction">
                     <option>All</option>
                     <option>Westbound</option>
                     <option>Eastbound</option>
@@ -81,10 +81,8 @@
         $(document).ready(function () {
             // create DateTimePicker from input HTML element
             $("#startDate").kendoDateTimePicker({
-                value: new Date()
             });
             $("#endDate").kendoDateTimePicker({
-                value: new Date()
             });
             $("#direction").kendoComboBox();
 
