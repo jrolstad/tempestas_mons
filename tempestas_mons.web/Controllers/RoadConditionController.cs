@@ -111,6 +111,29 @@ namespace tempestas_mons.web.Controllers
             return roadConditionSummaryViewModel;
         }
 
+        public ViewResult RangeAnalysis()
+        {
+            var viewModel = new RoadConditionRangeAnalysisViewModel
+            {
+                Month = DateTime.Today.ToString("MMMM"),
+                Day = 1,
+                Range = 5,
+                Summary = new RoadConditionSummaryViewModel
+                {
+                    PercentChainsRequiredAllVehicles = 0,
+                    PercentChainsRequiredExceptAllWheelDrive = 0,
+                    PercentPassClosed = 0,
+                    PercentTractionTiresAdvised = 0,
+                    PercentTractionTiresRequired = 0,
+                    PercentTrafficDelayed = 0,
+                    PercentTrafficDelayedForAvalancheControl = 0,
+                    PercentTrafficStoppedForAvalancheControl = 0,
+                }
+            };
+
+            return View(viewModel);
+        }
+
         private double Percentage(int sum, int count)
         {
             if (count == 0)

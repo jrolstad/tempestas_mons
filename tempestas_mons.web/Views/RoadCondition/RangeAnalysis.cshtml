@@ -1,0 +1,141 @@
+﻿@model tempestas_mons.web.Models.roadconditions.RoadConditionRangeAnalysisViewModel
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<div id="content">
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-inline container">
+            <div class="form-group">
+                <label for="month" class="control-label">Month</label>
+                <select id="month" name="month">
+                    <option>January</option>
+                    <option>February</option>
+                    <option>March</option>
+                    <option>April</option>
+                    <option>May</option>
+                    <option>June</option>
+                    <option>July</option>
+                    <option>August</option>
+                    <option>September</option>
+                    <option>October</option>
+                    <option>November</option>
+                    <option>December</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="day" class="control-label">Day</label>
+                <input id="day" style="width: 200px;" name="day" value="@Model.Day" />
+            </div>
+            <div class="form-group">
+                <label for="range" class="control-label">Range</label>
+                <input id="range" style="width: 200px;" name="range" value="@Model.Range" />
+            </div>
+            <div class="form-group">
+                <label for="direction" class="control-label">Direction</label>
+                <select id="direction" name="direction">
+                    <option>All</option>
+                    <option>Westbound</option>
+                    <option>Eastbound</option>
+                </select>
+            </div>
+            <input type="submit" value="Analyze" class="btn btn-primary" />
+        </div>
+    }
+
+    @if (Model.Summary != null)
+    {
+        <div id="summaryData">
+            <div>
+                <ul class="list-unstyled">
+                    <li>
+                        <h4>Traffic Delayed</h4>
+                        <div id="PercentTrafficDelayed"></div>
+                    </li>
+                    <li>
+                        <h4>Traffic Delayed (Avalanche Control)</h4>
+                        <div id="PercentTrafficDelayedForAvalancheControl"></div>
+                    </li>
+                    <li>
+                        <h4>Traction Tires Advised</h4>
+                        <div id="PercentTractionTiresAdvised"></div>
+                    </li>
+                    <li>
+                        <h4>Traction Tires Required</h4>
+                        <div id="PercentTractionTiresRequired"></div>
+                    </li>
+                    <li>
+                        <h4>Chains Required (Except AWD)</h4>
+                        <div id="PercentChainsRequiredExceptAllWheelDrive"></div>
+                    </li>
+                    <li>
+                        <h4>Chains Requried (All Vehicles)</h4>
+                        <div id="PercentChainsRequiredAllVehicles"></div>
+                    </li>
+                    <li>
+                        <h4>Pass Closed</h4>
+                        <div id="PercentPassClosed"></div>
+                    </li>
+                    <li>
+                        <h4>Pass Closed (Avalanche Control)</h4>
+                        <div id="PercentTrafficStoppedForAvalancheControl"></div>
+                    </li>
+
+
+                </ul>
+            </div>
+        </div>
+    }
+
+
+
+    <script>
+        $(document).ready(function () {
+            // create DateTimePicker from input HTML element
+
+            $("#month").kendoComboBox();
+            $("#day").kendoNumericTextBox({ min: 0,max: 31,step: 1});
+            $("#range").kendoNumericTextBox({ min: 0, max: 30, step: 1 });
+            $("#direction").kendoComboBox();
+
+            $("#PercentTractionTiresAdvised").kendoProgressBar({ min: 0, max: 100, type: "percent", animation: { duration: 400 } })
+                .data("kendoProgressBar")
+                .value(@Model.Summary.PercentTractionTiresAdvised);
+
+            $("#PercentTractionTiresRequired").kendoProgressBar({ min: 0, max: 100, type: "percent", animation: { duration: 400 } })
+                .data("kendoProgressBar")
+                .value(@Model.Summary.PercentTractionTiresRequired);
+
+            $("#PercentChainsRequiredAllVehicles").kendoProgressBar({ min: 0, max: 100, type: "percent", animation: { duration: 400 } })
+                .data("kendoProgressBar")
+                .value(@Model.Summary.PercentChainsRequiredAllVehicles);
+
+            $("#PercentChainsRequiredExceptAllWheelDrive").kendoProgressBar({ min: 0, max: 100, type: "percent", animation: { duration: 400 } })
+                .data("kendoProgressBar")
+                .value(@Model.Summary.PercentChainsRequiredExceptAllWheelDrive);
+
+            $("#PercentPassClosed").kendoProgressBar({ min: 0, max: 100, type: "percent", animation: { duration: 400 } })
+                .data("kendoProgressBar")
+                .value(@Model.Summary.PercentPassClosed);
+
+            $("#PercentTrafficDelayed").kendoProgressBar({ min: 0, max: 100, type: "percent", animation: { duration: 400 } })
+                .data("kendoProgressBar")
+                .value(@Model.Summary.PercentTrafficDelayed);
+
+            $("#PercentTrafficStoppedForAvalancheControl").kendoProgressBar({ min: 0, max: 100, type: "percent", animation: { duration: 400 } })
+                .data("kendoProgressBar")
+                .value(@Model.Summary.PercentTrafficStoppedForAvalancheControl);
+
+            $("#PercentTrafficDelayedForAvalancheControl").kendoProgressBar({ min: 0, max: 100, type: "percent", animation: { duration: 400 } })
+                .data("kendoProgressBar")
+                .value(@Model.Summary.PercentTrafficDelayedForAvalancheControl);
+
+        });
+    </script>
+
+</div>
