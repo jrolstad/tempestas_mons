@@ -16,8 +16,26 @@ namespace tempestas_mons.domain.models
 
         public string Weather { get; set; }
 
-        public string RoadCondition { get; set; }
+        public string RoadConditionText { get; set; }
 
-        public List<string> RestrictionMessages { get; set; }
+        public List<TravelRestriction> TravelRestrictions { get; set; }
+    }
+
+    public class TravelRestriction
+    {
+        public Direction Direction {get;set;}
+
+        public List<Restriction> Restrictions {get;set;}
+
+        public string RestrictionMessage {get;set;}
+    }
+
+    public enum Restriction
+    {
+        NoRestrictions,
+        TractionTiresAdvised,
+        TractionTiresRequired,
+        ChainsRequiredVehiclesOver10000GVW,
+        ChainsRequired,
     }
 }
