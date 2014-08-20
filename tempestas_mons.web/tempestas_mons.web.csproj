@@ -185,6 +185,7 @@
     <Compile Include="Models\api\RoadConditionApiModel.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\roadconditions\RoadConditionIndexViewModel.cs" />
+    <Compile Include="Models\roadconditions\RoadConditionRangeAnalysisViewModel.cs" />
     <Compile Include="Models\roadconditions\RoadConditionSummaryViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
